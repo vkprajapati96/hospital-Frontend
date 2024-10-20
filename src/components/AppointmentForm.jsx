@@ -30,12 +30,14 @@ const AppointmentForm = () => {
     "ENT",
     "booldTesting"
   ];
+  const token = JSON.parse(localStorage.getItem("token"));
 
   const [doctors, setDoctors] = useState([]);
   useEffect(() => {
     const fetchDoctors = async () => {
       const { data } = await axios.get(`https://hospital-backend-81if.onrender.com/api/v1/user/doctors`,
-        {withCredentials:true,headers:{"Content-Type":"application/json"}}
+        {withCredentials:true,headers: { "Content-Type": "application/json",'Authorization': token, }
+      }
         
       );
       setDoctors(data.doctors);
@@ -63,7 +65,8 @@ const AppointmentForm = () => {
           hasVisited: hasVisitedBool,
           address,
         },
-        {withCredentials:true,headers:{"Content-Type":"application/json"}}
+        {withCredentials:true,cd..headers: { "Content-Type": "application/json",'Authorization': token, }
+      }
 
        
       );
