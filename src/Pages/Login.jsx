@@ -10,7 +10,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [isAdmin,setIsAdmin] =useState(false);
 
   const navigateTo = useNavigate();
 
@@ -19,20 +18,19 @@ const Login = () => {
     try {
       await axios
         .post(
-          "http://localhost:4000/api/v1/user/login",
-          { email, password, confirmPassword, role:isAdmin?"Admin":"Patient" },
+          `${import.meta.env.VITE_BASE_URL}/api/v1/user/login`,
+          { email, password, confirmPassword, role: "Patient" },
           {
             withCredentials: true,
             headers: { "Content-Type": "application/json" },
           }
         )
         .then((res) => {
-          console.log(isAuthenticated);
           toast.success(res.data.message);
           setIsAuthenticated(true);
-          navigateTo(res.data.user.role=="Admin"?"/dashboard":"/");
+          navigateTo("/");
           setEmail("");
-          setPassword("");  
+          setPassword("");
           setConfirmPassword("");
         });
     } catch (error) {
@@ -71,12 +69,7 @@ const Login = () => {
             placeholder="Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            
           />
-          {
-            isAdmin?<p onClick={()=>{setIsAdmin(false)}}>Login User</p>:<p onClick={()=>{setIsAdmin(true)}}>Login Admin</p>
-          }
-         
           <div
             style={{
               gap: "10px",

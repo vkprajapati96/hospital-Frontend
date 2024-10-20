@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleLogout = async () => {
    try {
     await axios
-    .get("http://localhost:4000/api/v1/user/patient/logout",{
+    .get(`${import.meta.env.VITE_BASE_URL}/api/v1/user/patient/logout`,{
       withCredentials:true,
       headers:{"Content-Type":"application/json"}
     })
