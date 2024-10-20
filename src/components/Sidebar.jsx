@@ -18,7 +18,7 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     await axios
-      .get(`${import.meta.env.VITE_BASE_URL}/api/v1/user/admin/logout`, {
+      .get(`https://hospital-backend-81if.onrender.com/api/v1/user/admin/logout`, {
         withCredentials: true,
       })
       .then((res) => {

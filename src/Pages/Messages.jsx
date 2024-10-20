@@ -11,7 +11,7 @@ const Messages = () => {
     const fetchMessages = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_BASE_URL}/api/v1/message/getall`,
+          `https://hospital-backend-81if.onrender.com/api/v1/message/getall`,
           { withCredentials: true }
         );
         setMessages(data.messages);

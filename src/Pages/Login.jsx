@@ -18,7 +18,7 @@ const Login = () => {
     try {
       await axios
         .post(
-          `${import.meta.env.VITE_BASE_URL}/api/v1/user/login`,
+          `https://hospital-backend-81if.onrender.com/api/v1/user/login`,
           { email, password, confirmPassword, role: "Patient" },
           {
             withCredentials: true,

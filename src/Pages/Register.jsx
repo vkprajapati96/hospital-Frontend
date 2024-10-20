@@ -23,7 +23,7 @@ const Register = () => {
     try {
       await axios
         .post(
-          `${import.meta.env.VITE_BASE_URL}/api/v1/user/patient/register`,
+          `https://hospital-backend-81if.onrender.com/api/v1/user/patient/register`,
           { firstName, lastName, email, phone, nic, dob, gender, password },
           {withCredentials:true,
             headers:{"Content-Type":"application/json"}

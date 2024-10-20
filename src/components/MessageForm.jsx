@@ -24,7 +24,7 @@ const MessageForm = () => {
     try {
       await axios
         .post(
-          `${import.meta.env.VITE_BASE_URL}/api/v1/message/send`,
+          `https://hospital-backend-81if.onrender.com/api/v1/message/send`,
           { firstName, lastName, email, phone, message},
           {
             withCredentials: true,

@@ -34,7 +34,7 @@ const AppointmentForm = () => {
   const [doctors, setDoctors] = useState([]);
   useEffect(() => {
     const fetchDoctors = async () => {
-      const { data } = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/user/doctors`,
+      const { data } = await axios.get(`https://hospital-backend-81if.onrender.com/api/v1/user/doctors`,
         {withCredentials:true,headers:{"Content-Type":"application/json"}}
         
       );
@@ -47,7 +47,7 @@ const AppointmentForm = () => {
     try {
       const hasVisitedBool = Boolean(hasVisited);
       const { data } = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/api/v1/appointment/post`,
+        `https://hospital-backend-81if.onrender.com/api/v1/appointment/post`,
         {
           firstName,
           lastName,

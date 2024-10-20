@@ -23,7 +23,7 @@ const AddNewAdmin = () => {
     try {
       await axios
         .post(
-          `${import.meta.env.VITE_BASE_URL}/api/v1/user/admin/addnew`,
+          `https://hospital-backend-81if.onrender.com/api/v1/user/admin/addnew`,
           { firstName, lastName, email, phone, nic, dob, gender, password },
           {
             withCredentials: true,
