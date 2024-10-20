@@ -26,6 +26,7 @@ const Login = () => {
           }
         )
         .then((res) => {
+          localStorage.setItem("token",JSON.stringify(res.data.token))
           toast.success(res.data.message);
           setIsAuthenticated(true);
           navigateTo("/");
