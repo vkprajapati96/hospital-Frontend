@@ -5,7 +5,7 @@ import { Context } from "../main";
 import { Link, useNavigate, Navigate } from "react-router-dom";
 
 const Login = () => {
-  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const { setUser, setIsAuthenticated } = useContext(Context);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,6 +27,7 @@ const Login = () => {
         )
         .then((res) => {
           localStorage.setItem("token",JSON.stringify(res.data.token))
+          setUser(res.data.user)
           toast.success(res.data.message);
           setIsAuthenticated(true);
           navigateTo("/");

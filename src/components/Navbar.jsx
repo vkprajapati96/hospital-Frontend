@@ -9,13 +9,14 @@ import { Context } from "../main";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const token = JSON.parse(localStorage.getItem("token"));
 
   const handleLogout = async () => {
    try {
     await axios
     .get(`https://hospital-backend-81if.onrender.com/api/v1/user/patient/logout`,{
       withCredentials:true,
-      headers:{"Content-Type":"application/json"}
+      headers: { "Content-Type": "application/json",'Authorization': token,}
     })
     .then((res) => {
       console.log(isAuthenticated);
