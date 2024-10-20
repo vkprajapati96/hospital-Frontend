@@ -28,17 +28,19 @@ const AppointmentForm = () => {
     "Physical Therapy",
     "Dermatology",
     "ENT",
-    "booldTesting"
+    "booldTesting",
   ];
   const token = JSON.parse(localStorage.getItem("token"));
 
   const [doctors, setDoctors] = useState([]);
   useEffect(() => {
     const fetchDoctors = async () => {
-      const { data } = await axios.get(`https://hospital-backend-81if.onrender.com/api/v1/user/doctors`,
-        {withCredentials:true,headers: { "Content-Type": "application/json",'Authorization': token, }
-      }
-        
+      const { data } = await axios.get(
+        `https://hospital-backend-81if.onrender.com/api/v1/user/doctors`,
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json", Authorization: token },
+        }
       );
       setDoctors(data.doctors);
     };
@@ -65,10 +67,10 @@ const AppointmentForm = () => {
           hasVisited: hasVisitedBool,
           address,
         },
-        {withCredentials:true,cd..headers: { "Content-Type": "application/json",'Authorization': token, }
-      }
-
-       
+        {
+          withCredentials: true,
+          headers: { "Content-Type": "application/json", Authorization: token },
+        }
       );
       toast.success(data.message);
       setFirstName(""),
